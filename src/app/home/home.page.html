@@ -15,13 +15,13 @@
     </ion-toolbar>
   </ion-header>
   <ion-item>
-    <ion-input placeholder="Enter Destinatario"></ion-input>
+    <ion-input placeholder="Enter Destinatario" [(ngModel)]="to"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-input placeholder="Enter Emisor"></ion-input>
+    <ion-input placeholder="Enter Emisor" [(ngModel)]="from"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-input placeholder="Enter mensage"></ion-input>
+    <ion-input placeholder="Enter mensage" [(ngModel)]="message"></ion-input>
     <ion-button>Enviar</ion-button>
   </ion-item>
 </ion-content>
