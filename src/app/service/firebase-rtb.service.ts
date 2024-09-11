@@ -29,7 +29,7 @@ export class FirebaseRTBService {
   }
   enviarMensaje(_from: string, _message: string) {
     const nuevoMensaje = push(this.ref);
-    set(nuevoMensaje, { from: _from, message: _message });
+    set(nuevoMensaje, { from: _from, message: _message, time: new Date().getTime() });
   }
 
 }

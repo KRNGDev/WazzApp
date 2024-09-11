@@ -35,7 +35,8 @@ export class HomePage implements OnInit {
   }
   enviar() {
     console.log(this.message + this.from)
-    this.firebaseService.enviarMensaje(this.from, this.message)
+    this.firebaseService.enviarMensaje(this.from, this.message);
+    this.message = '';
   }
 
   public registrarUsuario() {

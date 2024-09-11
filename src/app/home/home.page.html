@@ -54,6 +54,9 @@
           >{{ mensaje.from }}</ion-label
         >
         <ion-label>{{ mensaje.message }}</ion-label>
+        <ion-card-subtitle class="time"
+          >{{mensaje.time | date:'dd/MM/yyyy - hh:mm'}}
+        </ion-card-subtitle>
       </div>
     </ion-item>
   </ion-list>
