@@ -1,0 +1,104 @@
+
+ion-item{
+    --background: #ffffff00;
+    --color: #fff;
+}
+ion-title{
+
+}
+ion-content{
+    --background: #393737;
+}
+/* Contenedor general del mensaje */
+ion-item.mens {
+    background: #e0e0e0; /* Color de fondo para mensajes recibidos */
+    color: #000;
+    border-radius: 15px;
+    margin: 5px;
+    padding: 8px 12px;
+    max-width: 70%; /* Limitar el ancho del mensaje */
+  }
+  
+  
+  /* Mensajes enviados por el usuario (desde 'Alberto') */
+  ion-item.usuario {
+    background: #dcf8c6; /* Color de fondo verde claro (como en WhatsApp) */
+    color: #000;
+    border-radius: 15px;
+    margin: 5px;
+    padding: 8px 12px;
+    max-width: 70%; /* Limitar el ancho del mensaje */
+    align-self: flex-end; /* Alinear mensajes enviados a la derecha */
+  }
+  
+  /* Estilo para el avatar */
+  ion-avatar {
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+  }
+  
+  /* Alinear los mensajes y el avatar a la derecha si el mensaje es de 'Alberto' */
+  ion-item.usuario div#datos {
+    text-align: right;
+  }
+  
+  /* Ajustes para el contenedor de mensajes */
+  ion-list {
+    background-color: #393737;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Para que los mensajes nuevos aparezcan al final */
+  }
+  
+  /* Estilos para los inputs y el botón en el pie de página */
+  ion-footer {
+    background-color: #379047;
+    border-radius: 10px 10px 0 0 ;
+    padding: 10px;
+  }
+  ion-header{
+    background-color: #379047;
+    border-radius: 0 0 10px 10px ;
+    padding: 10px;
+  }
+  ion-toolbar{
+   
+    --background:#379047;
+  }
+  ion-title.title-large.nombre {
+    color: #1f1e1f;
+    font-weight:bolder;
+    font-size: 25px;
+  }
+  ion-title.title-large.app {
+    color: #cac7ca;
+    font-weight:bolder;
+    font-size: 30px;
+  }
+  ion-label.titulo {
+    color: #1e1e1e;
+    font-weight:bolder;
+    font-size: larger;
+  }
+
+  ion-input {
+    border: 1px solid #ddd;
+    background-color: #bbb8b8;
+    border-radius: 20px;
+    padding: 10px;
+    flex-grow: 1;
+    
+    margin-right: 10px;
+  }
+  
+  ion-button {
+    --background: #34b7f1; /* Color azul típico de WhatsApp */
+    --border-radius: 20%;
+    padding: 10px;
+    height: 60px;
+    width: 120px;
+  }
+  

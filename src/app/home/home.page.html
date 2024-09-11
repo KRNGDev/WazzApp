@@ -1,7 +1,27 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title> WazzApp </ion-title>
-  </ion-toolbar>
+  <ion-item lines="full">
+    <ion-title class="app" size="large"> WazzApp </ion-title>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-input
+      placeholder="Emisor"
+      [(ngModel)]="from"
+      *ngIf="registrado==false"
+    ></ion-input>
+    <ion-title class="nombre" *ngIf="registrado" size="large">
+      {{from}}
+    </ion-title>
+    <ion-button
+      *ngIf="registrado==false"
+      (click)="registrarUsuario()"
+      [disabled]="from.length==0 || registrado"
+      >Registrar</ion-button
+    >
+    <ion-avatar *ngIf="registrado">
+      <img [src]="'https://picsum.photos/80/80?random=9' " alt="avatar" />
+    </ion-avatar>
+  </ion-item>
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -9,19 +29,44 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large"> Inbox </ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-item>
-    <ion-input placeholder="Enter Destinatario" [(ngModel)]="to"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input placeholder="Enter Emisor" [(ngModel)]="from"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input placeholder="Enter mensage" [(ngModel)]="message"></ion-input>
-    <ion-button>Enviar</ion-button>
-  </ion-item>
+  <ion-list>
+    <ion-item
+      lines="none"
+      [attr.class]="mensaje.from==='Alberto'? 'usuario' : 'mens'"
+      *ngFor="let mensaje of firebaseService.mensajes.slice().reverse(); let index"
+    >
+      <ion-avatar
+        *ngIf="mensaje.from!=='Alberto'"
+        [attr.slot]="mensaje.from === 'Alberto' ? 'end' : 'start'"
+      >
+        <img
+          [src]="'https://picsum.photos/80/80?random=' + index"
+          alt="avatar"
+        />
+      </ion-avatar>
+      <div
+        [attr.slot]="mensaje.from === 'Alberto' ? 'end' : 'start'"
+        id="datos"
+      >
+        <ion-label
+          class="titulo"
+          [attr.class]="mensaje.from==='Alberto'? 'usuario titulo' : 'titulo' "
+          >{{ mensaje.from }}</ion-label
+        >
+        <ion-label>{{ mensaje.message }}</ion-label>
+      </div>
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
+
+<ion-footer [translucent]="true">
+  <ion-toolbar>
+    <ion-item lines="none" class="footer">
+      <ion-input placeholder="Enter mensage" [(ngModel)]="message"></ion-input>
+      <ion-button (click)="enviar()">Enviar</ion-button>
+    </ion-item>
+  </ion-toolbar>
+</ion-footer>
